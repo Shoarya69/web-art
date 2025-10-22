@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block css %} <link rel="stylesheet" href="{{url_for('static',filename='test.css')}}"> {% endblock %}
+
+{% block content %}
+    <h1 class="test">here you can test your string art</h1>
+    <form method="POST" action="{{ url_for('upload.upload_pip') }}" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

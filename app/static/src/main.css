@@ -1,0 +1,22 @@
+@import "./prod.css";
+@import "./base.css";
+@import "./auth.css";
+@import "./register.css";
+@import "./home.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* commen termes */
+
+.flash-error {
+    @apply mb-4 px-4 py-3 rounded shadow-lg text-white bg-red-500;
+}
+.flash-success {
+    @apply mb-4 px-4 py-3 rounded shadow-lg text-white bg-green-500;
+}
+.flash-info {
+    @apply mb-4 px-4 py-3 rounded shadow-lg text-white bg-blue-500;
+}
