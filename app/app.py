@@ -34,6 +34,7 @@ def web():
     app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR,'static','uploads')
     app.config['RESIZE'] = os.path.join(BASE_DIR,'static','resize')
     app.config['Size'] = os.path.join(BASE_DIR,'static')
+    app.config['report'] = os.path.join(BASE_DIR,'thread','src','pathslastPath.txt')
     # app.config['output']= os.path.join(BASE_DIR,'static')
     app.register_blueprint(auth,url_prefix="")
     app.register_blueprint(dash,url_prefix="")

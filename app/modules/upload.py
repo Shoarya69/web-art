@@ -27,5 +27,5 @@ def upload_pip():
 
 @upload.route('/uploadpins',methods=['POST'])
 def uploadpins():
-    flash("Please do not submit in  this session")
-    return redirect(url_for('product.product_page'))
+        flash("This feture is not avalable ")
+        return redirect(url_for('product.product_page'))

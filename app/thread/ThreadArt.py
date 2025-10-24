@@ -16,6 +16,9 @@ def art(input,output,img_path):
 	Config.resultFolder = output
 	Config.pathFolder=os.path.join(BASE_DIR,'src','paths')
 	Config.imgPath = img_path
+	# Config.maxLines = mxli
+	# Config.calculationLineWeight = liwt
+	# Config.numberOfNails = pins
 	Pipeline.Generate()
 
 

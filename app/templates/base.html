@@ -25,10 +25,10 @@
         <ul class="base-nav-list">
             <li><a href="{{ url_for('home.home_page') }}" class="base-nav-content">Home</a></li>
             <li><a href="{{ url_for('home.home_page') }}#contact" class="base-nav-content">Contact</a></li>
-
+            
             <li><a href="{{ url_for('about.about_page') }}" class="base-nav-content">About Us</a></li>
             <li><a href="{{ url_for('product.product_page') }}" class="base-nav-content">Generate</a></li>
-
+            <li><a href="{{ url_for('test.test_page') }}" class="base-nav-content">Test</a></li>
             {% if session.get('user_id') %}
                 <li><a href="{{ url_for('auth.logout') }}" class="base-logout-link">Logout</a></li>
             {% else %}
