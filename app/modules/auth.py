@@ -16,7 +16,7 @@ def auth_page():
 
         if user:
             session['user_id'] = user['id']
-            return redirect(url_for('dash.dash_page'))
+            return redirect(url_for('home.home_page'))
         else:
             flash("incorrect password or username",'error')
             return render_template('auth.html')

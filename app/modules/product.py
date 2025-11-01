@@ -25,8 +25,8 @@ def product_page():
         else:
             flash("No uploaded pic. ",'error')
             return render_template('product.html')
-        
-    return render_template('product.html')
+    data = session.get("user_data",{})   
+    return render_template('product.html',data=data)
 
 @product.route('/report',methods=['GET'])
 def product_report():
@@ -35,7 +35,7 @@ def product_report():
         flash("Somthing went wrong in product_report route",'error')
         return redirect(url_for('product.product_page'))
     try:
-        return send_file(file_path, as_attachment=True)
+        return send_file(file_path, as_attachment=True,download_name=f"user_report.txt")
     except FileNotFoundError:
         return "File not found!", 404
          

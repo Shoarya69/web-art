@@ -7,6 +7,7 @@ from app.modules.product import product
 from app.modules.regi import regi
 from app.modules.test import test
 from app.modules.upload import upload
+from app.modules.errorhad import register_global_handlers
 # from app.extension import socketio
 from flask import session
 import os
@@ -35,6 +36,8 @@ def web():
     app.config['RESIZE'] = os.path.join(BASE_DIR,'static','resize')
     app.config['Size'] = os.path.join(BASE_DIR,'static')
     app.config['report'] = os.path.join(BASE_DIR,'thread','src','pathslastPath.txt')
+    app.config['Edting_upload'] = os.path.join(BASE_DIR,'static','ed_upload')
+    app.config['Edited_output'] = os.path.join(BASE_DIR,'static','ed_output')
     # app.config['output']= os.path.join(BASE_DIR,'static')
     app.register_blueprint(auth,url_prefix="")
     app.register_blueprint(dash,url_prefix="")
@@ -44,6 +47,8 @@ def web():
     app.register_blueprint(test,url_prefix="")
     app.register_blueprint(regi,url_prefix="")
     app.register_blueprint(upload,url_prefix="")
+    # app.register_blueprint(errorhad,url_prefix="")
+    register_global_handlers(app)
     # socketio.init_app(app)
     return app
 

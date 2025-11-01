@@ -1,12 +1,8 @@
 from flask import Blueprint,request,current_app,session,url_for,flash,redirect
-
+from app.allow.alowed_files import allowed_file
 from app.max.uploadrooute import ok
 upload = Blueprint("upload",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
 
-ALLOWED_EXTENSION={'png','jpg','jpeg','gif'}
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSION
 
 
 
@@ -27,5 +23,10 @@ def upload_pip():
 
 @upload.route('/uploadpins',methods=['POST'])
 def uploadpins():
+        session['user_data'] = {
+        'pins': request.form['pin'],
+        'liwt': request.form['liwt'],
+        'mxli': request.form['mxli']
+        }
         flash("This feture is not avalable ")
         return redirect(url_for('product.product_page'))

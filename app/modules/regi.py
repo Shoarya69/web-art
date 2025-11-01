@@ -22,7 +22,7 @@ def register():
             user_id = cursor.lastrowid
             
             session['user_id'] = user_id
-            return redirect(url_for('dash.dash_page'))
+            return redirect(url_for('home.home_page'))
         except Exception as e:
             db.rollback()
             flash(f"Database error: {e}", 'error')

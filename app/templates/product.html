@@ -57,15 +57,15 @@
                 <form action="/uploadpins" method="post">
                     <!-- no. of pins -->
                     <label for="no.pin" class="pro-range-label" id="pins">Select No. of pins:</label>
-                    <input type="range" id="pin" name="pin" min="100" max="3000" value="300" class="pro-range-input" oninput="updatepins(this.value)" >
+                    <input type="range" id="pin" name="pin" min="100" max="3000" value="{{ data.pins if data and data.pins else '300' }}" class="pro-range-input" oninput="updatepins(this.value)" >
                     <p id="volumeValue" class="pro-range-value">pins: 300 pins</p>
                     <!-- line width -->
                     <label for="line-width" class="pro-range-label" id="li">Select line width:</label>
-                    <input type="range" id="liwt" name="liwt" min="1" max="30" value="15" class="pro-range-input" oninput="updateliwt(this.value)"  >
+                    <input type="range" id="liwt" name="liwt" min="1" max="30" value="{{ data.liwt if data and data.liwt else '15' }}" class="pro-range-input" oninput="updateliwt(this.value)"  >
                     <p id="line-wt" class="pro-range-value">li-wt: 15 line-width</p>
                     <!-- max lines -->
                     <label for="max-line" class="pro-range-label" id="li">Select Max lines:</label>
-                    <input type="range" id="mxli" name="mxli" min="1" max="10000" value="1000" class="pro-range-input" oninput="updatemxli(this.value)"  >
+                    <input type="range" id="mxli" name="mxli" min="1" max="10000" value="{{ data.mxli if data and data.mxli else '1000' }}" class="pro-range-input" oninput="updatemxli(this.value)"  >
                     <p id="mx-line" class="pro-range-value">mx-li: 1000 max lines</p>
                     <button type="submit"  class="pro-button" >Submit</button>
                 </form>
