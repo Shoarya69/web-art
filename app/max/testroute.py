@@ -35,7 +35,7 @@ def gog(file):
 def gog2(output):
     f = output
     u = session.get('user_id')
-    i = session.get("edit-id")
+    i = session.get("edit_id")
     try:
         cursor = get_cursor()
         quary = "INSERT INTO editcre (user_id,image_id,imagecre_URl) VALUES (%s,%s,%s)"
