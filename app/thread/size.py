@@ -1,6 +1,5 @@
 from PIL import Image
-import io
-import os
+from flask import session
 
 def resize_image(input_path, output_path):
    
@@ -20,6 +19,8 @@ def resize_image(input_path, output_path):
     
     # Save the new image
     img.save(output_path)
+    if session.get('upload_button'):
+                session['upload_button'] = 0
     print(f"Image saved to {output_path})")
 
 def resize_image1(image, output_path):
@@ -39,5 +40,6 @@ def resize_image1(image, output_path):
     
     # Save the new image
     img.save(output_path)
+    if session.get('upload_button'):
+                session['upload_button'] = 0
     print(f"Image saved to {output_path})")
-

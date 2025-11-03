@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template,session
+from app.all_dir.diretre12 import Static,template
 
-dash = Blueprint("dash",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+dash = Blueprint("dash",__name__,static_folder=Static,template_folder=template)
 
 @dash.route('/dashboard',methods=['GET','POST'])
 def dash_page():

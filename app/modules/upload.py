@@ -1,7 +1,9 @@
 from flask import Blueprint,request,current_app,session,url_for,flash,redirect
 from app.allow.alowed_files import allowed_file
 from app.max.uploadrooute import ok
-upload = Blueprint("upload",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+from app.all_dir.diretre12 import Static,template
+
+upload = Blueprint("upload",__name__,static_folder=Static,template_folder=template)
 
 
 

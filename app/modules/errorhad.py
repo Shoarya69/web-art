@@ -1,6 +1,7 @@
-from flask import Blueprint,render_template,request,session,flash
+from flask import Blueprint,render_template,request,session,flash,redirect
+from app.all_dir.diretre12 import Static,template
 
-errorhad = Blueprint("errorhad",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+errorhad = Blueprint("errorhad",__name__,static_folder=Static,template_folder=template)
 
 def register_global_handlers(app):
     @app.errorhandler(404)
@@ -15,3 +16,8 @@ def register_global_handlers(app):
     @app.errorhandler(400)
     def global_400(e):
         return render_template("400.html"), 400
+    @app.errorhandler(413)
+    def file_big(e):
+        print("there is an error :- ",e)
+        flash("file is to big max size is 10 mb","error")
+        return redirect(request.referrer or '/')

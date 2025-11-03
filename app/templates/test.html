@@ -2,7 +2,7 @@
 {% block css %}  {% endblock %}
 
 {% block content %}
-<h1 class="test">This is an edting page</h1>
+
 
 
 <!-- Flash messages -->
@@ -33,6 +33,7 @@
         method="POST"
         action=""
         enctype="multipart/form-data"
+        id="for_test_form"
       >
         <label for="edit_type" class="test_lable">Select your Edit-type:</label>
         <select id="edit_type" class = "test_select" name="edit_type">
@@ -43,7 +44,7 @@
               <option class = "test_opt" value="sharp">Sharpen</option>
               <option class = "test_opt" value="cart">Cartoon</option>
         </select>
-          <input type="file" name="ed_image" accept="image/*" oninput="uploadpic(this)"/>
+          <input id="fi_test_input" type="file" name="ed_image" accept="image/*" oninput="uploadpic(this)"/>
           <button type="submit" class="test_button">Upload</button>
       </form>
         {% if session.get("ed_upload") %}
@@ -65,6 +66,9 @@
     </div>
 </div>
 
+  <script>
+        const tooLargeURL = "{{ url_for('error12.too_large2') }}";
+    </script>
   <script 
     src="{{ url_for('static',filename='js/test.js') }}">
         // Backend

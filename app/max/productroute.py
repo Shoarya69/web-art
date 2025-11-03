@@ -8,7 +8,7 @@ def kio(image_name):
     try:
         cursor = get_cursor()
         quary = "INSERT INTO datacre (user_id,image_id,imagecre_URL) VALUES (%s, %s, %s)"
-        cursor.execute(quary,(session['user_id'],session['image_id'],f"out{image_name}"))
+        cursor.execute(quary,(session['user_id'],session['image_id'],f"{image_name}"))
         print("trying to save data in db")
         db.commit()
     except Exception as e:
@@ -29,7 +29,5 @@ def fun():
     art(path2,output_path,path3)
     image_name = os.path.basename(image_path)
     session['output_img']=output_path+"/out"+f"{image_name}"
-    if session.get('user_id'):
-        kio(image_name)
     name_only, _ = os.path.splitext(image_name)
     return f"out{name_only}.png"

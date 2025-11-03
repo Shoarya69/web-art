@@ -41,7 +41,7 @@
 <!-- MAIN CONTENT -->
         <div class="flex justify-center mt-10">
             <h1 class="product-page-title">
-                This is product page
+                This is String ART Generator Page
             </h1>
             
         </div>
@@ -49,9 +49,9 @@
   <!-- Rectangle -->
         <div class="rectangle-box">
             <div class="picture">
-                <form action="/upload" method="POST" enctype="multipart/form-data">
+                <form id="up_fo_pro" action="/upload" method="POST" enctype="multipart/form-data">
                     <label for="image" class="block mb-2 text-lg font-medium">Upload your picture:</label>
-                    <input type="file" name="image" accept="image/*" class="border rounded p-2  "  enctype="multipart/form-data" oninput="uploadpic(this)"><br>
+                    <input id="fi_in_pro" type="file" name="image" accept="image/*" class="border rounded p-2  "  enctype="multipart/form-data" oninput="uploadpic(this)"><br>
                     <button type="submit" class="pro-submit-bt">Submit</button><br><br>
                 </form>
                 <form action="/uploadpins" method="post">
@@ -83,20 +83,28 @@
         </div>
         
         <div  class="image-circle">
-            <img  id="out4" src="#" alt="Image" class="max-w-full max-h-full object-contain rounded-full">
+            <img  id="out4" src="#" alt="Image" class="max-w-full max-h-full object-contain rounded-full" >
         </div>
         <br>
       <div class="pro-apply-bt">
-        {% if session.get('last_upload') %}
-            <form action="/product" method="post">
+        {% if session.get('upload_button') == 1 %}
+            <form action="/product" method="post" id="uploadForm" onsubmit="loader()" >
                 <input type="submit" value="Upload" class="upload-button">
             </form>
+            <div id="loader" class="upload_loader hidden ">
+                <div class="w-9 h-9 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
+                <p class="text-blue-600 text-sm mt-2 font-medium">processing...</p>
+            </div>
+        {% else %}
+            <div></div>    
         {% endif %}
 </div>
 
     </div>
     
-
+    <script>
+        const tooLargeURL = "{{ url_for('error12.too_large') }}";
+    </script>
     <script src="{{ url_for('static',filename='js/product.js') }}">
         // Backend
     </script>

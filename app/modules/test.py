@@ -3,7 +3,9 @@ from app.editing.image_12 import editing
 from app.allow.alowed_files import allowed_file
 from app.max.testroute import gog,gog2
 import time
-test = Blueprint("test",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+from app.all_dir.diretre12 import Static,template
+
+test = Blueprint("test",__name__,static_folder=Static,template_folder=template)
 
 
 @test.route('/test',methods = ['GET','POST'])

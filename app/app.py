@@ -8,6 +8,8 @@ from app.modules.regi import regi
 from app.modules.test import test
 from app.modules.upload import upload
 from app.modules.errorhad import register_global_handlers
+from app.modules.history import history
+from app.modules.error12 import error12
 # from app.extension import socketio
 from flask import session
 import os
@@ -29,8 +31,8 @@ def web():
     app = Flask(__name__)
 
     app.secret_key = os.getenv("SECRET_KEY")
-
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
     # UPLOAD_FOLDER = 'static/uploads'
     app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR,'static','uploads')
     app.config['RESIZE'] = os.path.join(BASE_DIR,'static','resize')
@@ -47,6 +49,9 @@ def web():
     app.register_blueprint(test,url_prefix="")
     app.register_blueprint(regi,url_prefix="")
     app.register_blueprint(upload,url_prefix="")
+    app.register_blueprint(history,url_prefix="")
+    app.register_blueprint(error12,url_prefix="")
+    
     # app.register_blueprint(errorhad,url_prefix="")
     register_global_handlers(app)
     # socketio.init_app(app)

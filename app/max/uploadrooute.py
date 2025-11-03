@@ -1,4 +1,4 @@
-from flask import session,current_app,flash
+from flask import session,current_app,flash,url_for
 import os
 from app.database import get_cursor,db
 import uuid
@@ -18,7 +18,8 @@ def ok(file):
             cursor = get_cursor()
             quary = "INSERT INTO data (user_id, image_URL) VALUES (%s, %s)"
             print("trying to save data in db")
-            cursor.execute(quary,(user_id,filename))
+            file_name = f"uploads/{filename}"
+            cursor.execute(quary,(user_id,file_name))
             db.commit()
             image_id = cursor.lastrowid
             session['image_id'] = image_id
@@ -30,5 +31,6 @@ def ok(file):
             cursor.close()
     print("save data in db success")
     session['last_upload'] = f"uploads/{filename}"
+    session['upload_button'] = 1
     print(session.get('last_upload'))
     flash("Image uploaded successfully", "success")

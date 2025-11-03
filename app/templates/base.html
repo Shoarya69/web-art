@@ -65,6 +65,11 @@
               >Logout</a
             >
           </li>
+          <li>
+            <a href="{{ url_for('history.history_page')}}" class="base-history-link">
+              History
+            </a>
+          </li>
           {% else %}
           <li>
             <a href="{{ url_for('auth.auth_page') }}" class="base-login-link"

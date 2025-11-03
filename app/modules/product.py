@@ -1,9 +1,10 @@
-from flask import Blueprint,render_template,request,session,flash,current_app,url_for,redirect,send_file
-from app.max.productroute import fun
+from flask import Blueprint,render_template,request,session,flash,current_app,url_for,redirect,send_file,after_this_request
+from app.max.productroute import fun,kio
 import time
 from markupsafe import Markup
+from app.all_dir.diretre12 import Static,template
 
-product = Blueprint("product",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+product = Blueprint("product",__name__,static_folder=Static,template_folder=template)
 
 def sleep():
     print("Here process is finesed")
@@ -18,6 +19,8 @@ def product_page():
             output = fun()
             path = url_for('static',filename=f"output/{output}")
             session['op'] = path
+            if session.get('user_id'):
+                kio(f"output/{output}")
             sleep()
             flash('DOM','ko')
             flash(Markup(f'your string art is ready. Download result <a href ="{url_for("product.product_report")}">Click Here</a>'),'report')
@@ -26,6 +29,7 @@ def product_page():
             flash("No uploaded pic. ",'error')
             return render_template('product.html')
     data = session.get("user_data",{})   
+    
     return render_template('product.html',data=data)
 
 @product.route('/report',methods=['GET'])

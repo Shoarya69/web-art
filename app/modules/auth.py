@@ -1,6 +1,8 @@
 from flask import Blueprint,render_template,session,request,url_for,redirect,flash
 from app.database import get_cursor
-auth = Blueprint("auth",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+from app.all_dir.diretre12 import Static,template
+
+auth = Blueprint("auth",__name__,static_folder=Static,template_folder=template)
 
 @auth.route('/auth',methods=['GET','POST'])
 def auth_page():
@@ -10,7 +12,7 @@ def auth_page():
 
         cursor = get_cursor()
 
-        cursor.execute("SELECT * FROM users WHERE username = %s && password = %s",(username,password))
+        cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s",(username,password))
         user = cursor.fetchone()
         cursor.close()
 

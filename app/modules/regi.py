@@ -1,7 +1,8 @@
 from flask import Blueprint,render_template,request,session,flash,redirect,url_for
 from app.database import get_cursor,db
+from app.all_dir.diretre12 import Static,template
 
-regi = Blueprint("regi",__name__,static_folder="/home/shoarya/Desktop/web/app/static",template_folder="/home/shoarya/Desktop/web/app/templates")
+regi = Blueprint("regi",__name__,static_folder=Static,template_folder=template)
 
 @regi.route('/register',methods=['GET','POST'])
 def register():
