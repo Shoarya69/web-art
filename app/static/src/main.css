@@ -1,3 +1,4 @@
+
 @import "./prod.css";
 @import "./base.css";
 @import "./auth.css";
@@ -5,9 +6,11 @@
 @import "./test.css";
 @import "./home.css";
 @import "./history.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 
 /* commen termes */
@@ -25,5 +28,5 @@
     @apply  mb-4 px-4 py-3 rounded shadow-lg text-white bg-black;
 }
 .flash-report a{
-    @apply  text-blue-700 underline;;
+    @apply  text-blue-700 underline;
 }

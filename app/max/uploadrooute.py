@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 
 def ok(file):
     filename =secure_filename(file.filename)
+    print(f"{filename}")
     ext = os.path.splitext(filename)[1]
     filename = f"{uuid.uuid4()}{ext}"
     upload_folder = current_app.config.get('UPLOAD_FOLDER')

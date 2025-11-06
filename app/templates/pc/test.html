@@ -28,12 +28,13 @@
           <!-- input box / -->
     
     <div class="input_test">
-      <h1 class="input-box" >This is Input box</h1>
+      <h1 class="input-box-test-12" >This is Input box</h1>
       <form
         method="POST"
         action=""
         enctype="multipart/form-data"
         id="for_test_form"
+        onsubmit="loader()"
       >
         <label for="edit_type" class="test_lable">Select your Edit-type:</label>
         <select id="edit_type" class = "test_select" name="edit_type">
@@ -61,7 +62,11 @@
         {% if session.get("ed_output_ed") %}
           <img src="{{url_for('static',filename=session.get('ed_output_ed'))}}" alt="Imgae" class="max-w-full max-h-full object-contain">
         {% else %}
-          <img id="pic" src="{{ url_for('static', filename='picture/image6.png') }}" alt="Image" class="max-w-full max-h-full object-contain">
+          <img id="pic_for_loader" src="{{ url_for('static', filename='picture/image6.png') }}" alt="Image" class="max-w-full max-h-full object-contain">
+          <div id="loader" class="upload_loader hidden ">
+                <div class="w-9 h-9 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
+                <p class="text-blue-600 text-sm mt-2 font-medium">processing...</p>
+          </div>
         {% endif %}
     </div>
 </div>

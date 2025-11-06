@@ -5,4 +5,4 @@ about = Blueprint("about",__name__,static_folder=Static,template_folder=template
 
 @about.route('/about',methods=['GET'])
 def about_page():
-    return render_template('about.html')
+    return render_template('pc/about.html')

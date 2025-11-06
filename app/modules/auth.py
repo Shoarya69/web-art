@@ -21,11 +21,11 @@ def auth_page():
             return redirect(url_for('home.home_page'))
         else:
             flash("incorrect password or username",'error')
-            return render_template('auth.html')
+            return redirect(url_for('auth_page'))
     return render_template('auth.html')
 
 @auth.route('/logout',methods=['GET','POST'])
 def logout():
     session.clear()
     flash('success fully log out')
-    return redirect(url_for('dash.dash_page'))
+    return redirect(url_for('home.home_page'))

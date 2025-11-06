@@ -3,6 +3,7 @@ from app.max.productroute import fun,kio
 import time
 from markupsafe import Markup
 from app.all_dir.diretre12 import Static,template
+from app.ismobile12 import is_mobile
 
 product = Blueprint("product",__name__,static_folder=Static,template_folder=template)
 
@@ -24,13 +25,16 @@ def product_page():
             sleep()
             flash('DOM','ko')
             flash(Markup(f'your string art is ready. Download result <a href ="{url_for("product.product_report")}">Click Here</a>'),'report')
-            return render_template('product.html')
+            return redirect(url_for('product.product_page'))
         else:
             flash("No uploaded pic. ",'error')
-            return render_template('product.html')
+            return redirect(url_for('product.product_page'))
     data = session.get("user_data",{})   
+    if is_mobile():
+        return render_template('mobile/product.html',data=data)
+    else:
+        return render_template('pc/product.html',data=data)
     
-    return render_template('product.html',data=data)
 
 @product.route('/report',methods=['GET'])
 def product_report():

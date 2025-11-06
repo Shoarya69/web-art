@@ -1,6 +1,7 @@
 from flask import Blueprint,render_template,session,url_for,redirect,flash
 from app.all_dir.diretre12 import Static,template
 from app.max.historyroute import lol
+from app.ismobile12 import is_mobile
 history = Blueprint("history",__name__,static_folder=Static,template_folder=template)
 
 @history.route("/history")
@@ -11,5 +12,8 @@ def history_page():
     if session.get("user_id"):
         creations = lol()
         print(creations)
-        return render_template("history.html",creations = creations)
-    return render_template("history.html")
+        if is_mobile():
+            return render_template("mobile/history.html",creations = creations)
+        else:
+            return render_template("pc/history.html",creations = creations)
+    # return render_template("history.html")
