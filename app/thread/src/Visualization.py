@@ -1,7 +1,7 @@
 from math import sin, cos, pi
 from PIL import Image, ImageDraw
 from app.thread.pipline2 import Config as config
-
+import os
 
 class Visualization:
 
@@ -30,7 +30,8 @@ class Visualization:
 			self.baseImage = self.__addInfos(self.baseImage)
 		# self.baseImage.show()
 		if config.createResultImage:
-			sourceName = config.imgPath.split("/")[-1].split(".")[0]
+			# sourceName = config.imgPath.split("/")[-1].split(".")[0]
+			sourceName = os.path.splitext(os.path.basename(config.imgPath))[0]
 			self.baseImage.save(f"{config.resultFolder}/out{sourceName}.png", "PNG")
 		print("Finished")
 
